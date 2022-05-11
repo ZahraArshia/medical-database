@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS patients (
 CREATE TABLE IF NOT EXISTS medical_histories(
 	id INT GENERATED ALWAYS AS IDENTITY,
 	admitted_at timestamp,
-    patient_id int,
-    status varchar(300),
+  patient_id int references patients(id),
+  status varchar(300),
 	PRIMARY KEY (id)
 );
 
