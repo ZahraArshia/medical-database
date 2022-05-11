@@ -13,14 +13,12 @@ CREATE TABLE IF NOT EXISTS medical_histories(
 	PRIMARY KEY (id)
 );
 
-
-
 CREATE TABLE IF NOT EXISTS invoices (
     id INT GENERATED ALWAYS AS IDENTITY,
     total_amount decimal,
     generated_at timestamp,
     payed_at timestamp,
-    medical_history_id int,
+    medical_history_id int references medical_histories(id),
 	PRIMARY KEY (id)
 );
 
@@ -41,3 +39,7 @@ CREATE TABLE IF NOT EXISTS invoice_items (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE medical_documents (
+  medical_histories_id INT references medical_histories(id), 
+  treatments_id INT references treatments(id)
+  );
